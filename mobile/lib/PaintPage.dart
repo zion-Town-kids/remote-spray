@@ -77,22 +77,28 @@ class _PaintPage extends State<PaintPage> {
     return Container(
       color: Colors.black,
       child: Stack(children: [
-        Container( // PAINT FX
-          alignment: Alignment.topCenter,
-          child: Stack(children: [
-            Image.asset(
-              "assets/fx4.webp",
-              height: screen.height * 0.65,
-              color: Color.fromRGBO(255,255,255, paintPower),
-              colorBlendMode: BlendMode.modulate,
-            ),
-            Image.asset(
-              "assets/whiteFilter.gif",
-              height: screen.height * 0.65,
-              color: Color.fromRGBO(255,255,255, paintPower),
-              colorBlendMode: BlendMode.modulate,
-            ),
-          ])
+        WillPopScope(
+          onWillPop: () async {
+            print("NOPE");
+            Future.value(false); //return a `Future` with false value so this route cant be popped or closed.
+          },
+          child: Container( // PAINT FX
+            alignment: Alignment.topCenter,
+            child: Stack(children: [
+              Image.asset(
+                "assets/fx4.webp",
+                height: screen.height * 0.65,
+                color: Color.fromRGBO(255,255,255, paintPower),
+                colorBlendMode: BlendMode.modulate,
+              ),
+              Image.asset(
+                "assets/whiteFilter.gif",
+                height: screen.height * 0.65,
+                color: Color.fromRGBO(255,255,255, paintPower),
+                colorBlendMode: BlendMode.modulate,
+              ),
+            ])
+          ),
         ),
         Container(
           margin: EdgeInsets.only(
