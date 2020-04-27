@@ -124,6 +124,11 @@ void loop(){
 
 4. The motor should rotate 90º wait one second, rotate another 90º, wait one second, and then back to the initial position.
 
+## Mobile app
+At the moment there is only application for Android. But since it's coded using Flutter, it should be really easy to make it work for iOS. The proble is that I don't have a mac. If you have one please try to make it work for iOS :)
+
+As of now the app is not releases in any way and if you want to try you must instal flutter and compile it yourself. This should change soon.
+
 ## Credits and refs
 ### For set up and testing components:
 * [Arduino servo motors](https://www.instructables.com/id/Arduino-Servo-Motors)
@@ -133,4 +138,4 @@ void loop(){
 * [Bluetooth for flutter](https://github.com/edufolly/flutter_bluetooth_serial)
 #### Assets:
 * [Radar GIF](https://media.giphy.com/media/TKijmiXU6z700j6Gkp/giphy.gif)
-* [Abstract GIF](https://i.gifer.com/7ZAO.gif)
+* [Paint effect GIF](https://giphy.com/gifs/90s-80s-glitch-xUA7aM80YLoJEj5yxO)
