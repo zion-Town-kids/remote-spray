@@ -96,9 +96,6 @@ void loop() {
 	* red => 5v
     * brown => ground
     * orange => PWM (we bill be using the pin #13. Make sure that you use a pin that can be used for PWM on your board.
-
-[![](https://notes.nau.qhigh.com/uploads/images/gallery/2020-04/scaled-1680-/image-1587320658753.png)](https://notes.nau.qhigh.com/uploads/images/gallery/2020-04/image-1587320658753.png)
-
 3. We'll need to install specific version of Servo library for our device. Go to `Library Manager` inside Arduino IDE, search and install `ServoESP32`. If you use another device, maybe it's compatible with the default servo library (so you don't have to do this step, or maybe it requires another equivalent). 
 3. Upload this code:
 ```c++
@@ -128,8 +125,12 @@ void loop(){
 4. The motor should rotate 90º wait one second, rotate another 90º, wait one second, and then back to the initial position.
 
 ## Credits and refs
-### Used guides and tutos
-#### For set up and testing components:
+### For set up and testing components:
 * [Arduino servo motors](https://www.instructables.com/id/Arduino-Servo-Motors)
 * [ESP32 Servo motors](https://microcontrollerslab.com/esp32-servo-motor-web-server-arduino/)
 * [ESP32 Bluetooth](https://circuitdigest.com/microcontroller-projects/using-classic-bluetooth-in-esp32-and-toogle-an-led)
+### For mobile app
+* [Bluetooth for flutter](https://github.com/edufolly/flutter_bluetooth_serial)
+#### Assets:
+* [Radar GIF](https://media.giphy.com/media/TKijmiXU6z700j6Gkp/giphy.gif)
+* [Abstract GIF](https://i.gifer.com/7ZAO.gif)

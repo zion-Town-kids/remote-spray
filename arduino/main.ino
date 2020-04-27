@@ -8,7 +8,7 @@ const bool debug = true;
 const int servoPin = 13;   // PWM PIN where the servo control signal is connected (change it according to your device and schematic)
 const int idleAngle = 0; //Angle in which the servo will be rotated when not painting
 const int paintAngle = 90; //Angle in which the servo will be rotated when painting
-const int refreshPeriod = 100; //Sleep time beetween reads for new bluetooth messages in ms
+const int refreshPeriod = 20; //Sleep time beetween reads for new bluetooth messages in ms
 
 void setup() { 
    // We need to attach the servo to the used pin number 
@@ -25,7 +25,6 @@ void setup() {
 void loop(){ 
   if (BtDev.available()) { // Is there a new message?
     int incoming = BtDev.read(); //Read what we recevive 
-    log("Message received");
     if (incoming == 48) { // 48: ASCI code for "0"
       // Stop painting
       log("Stop painting");
@@ -38,11 +37,11 @@ void loop(){
       BtDev.println("Start painting");
       motor.write(paintAngle); 
     }
-    else {
-      // Unknown message
-      log("Unknown message received");
-      BtDev.println("Unknown message received");
-    }
+    // else {
+    //   // Unknown message
+    //   log("Unknown message received: " + String(incoming));
+    //   BtDev.println("Unknown message received: " + String(incoming));
+    // }
   }
   delay(refreshPeriod);
 }
