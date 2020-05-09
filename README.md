@@ -20,7 +20,8 @@ Follow this steps to configure and test your device, specially the Bluetooth. Yo
 
 #### Arduino
 1. Install arduino
-2. Install device (forgot to write it on time)
+2. Install device on Arduino IDE: File / Preferences / Enter `https://dl.espressif.com/dl/package_esp32_index.json` into the Additional Board Manager URLs field. Then go to Tools / board mannager / look for ESP32 and install.
+3. Select the board: Tools / Board / ESP32 Dev Module, and select the upload speed to 115200
 3. You may have to give permission to the usb device, example `sudo chmod 666 /dev/ttyUSB0`
 4. Paste this code into the editor: 
 ```c++ 
@@ -96,7 +97,7 @@ void loop() {
 	* red => 5v
     * brown => ground
     * orange => PWM (we bill be using the pin #13. Make sure that you use a pin that can be used for PWM on your board.
-3. We'll need to install specific version of Servo library for our device. Go to `Library Manager` inside Arduino IDE, search and install `ServoESP32`. If you use another device, maybe it's compatible with the default servo library (so you don't have to do this step, or maybe it requires another equivalent). 
+3. We'll need to install specific version of Servo library for our device. Go to Tools / Manage Libraries ..., inside Arduino IDE, search and install `ServoESP32`. If you use another device, maybe it's compatible with the default servo library (so you don't have to do this step, or maybe it requires another equivalent). 
 3. Upload this code:
 ```c++
 #include <Servo.h> 

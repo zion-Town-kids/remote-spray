@@ -1,6 +1,7 @@
 {
     "board": "esp32:esp32:esp32",
-    "configuration": "PSRAM=disabled,PartitionScheme=default,CPUFreq=240,FlashMode=qio,FlashFreq=80,FlashSize=4M,UploadSpeed=115200,DebugLevel=none",
+    "configuration": "PSRAM=disabled,PartitionScheme=default,CPUFreq=240,FlashMode=qio,FlashFreq=80,FlashSize=4M,UploadSpeed=921600,DebugLevel=none",
     "port": "/dev/ttyUSB0",
-    "sketch": "arduino/main.ino"
+    "programmer": "AVRISP mkII",
+    "sketch": "arduino/main/main.ino"
 }

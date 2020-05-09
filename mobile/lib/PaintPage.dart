@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import './SettingsPage.dart';
+
 class PaintPage extends StatefulWidget {
   final BluetoothDevice server;
   final Animation<double> ani;
@@ -16,6 +18,8 @@ class PaintPage extends StatefulWidget {
 
 class _PaintPage extends State<PaintPage> {
   double paintPower = 0;
+  int powerIndex = 1;
+  List<String> powerValues = ["0", "60", "120", "180"];
   double initAnimation = 0;
 
   static final clientID = 0;
@@ -78,10 +82,7 @@ class _PaintPage extends State<PaintPage> {
       color: Colors.black,
       child: Stack(children: [
         WillPopScope(
-          onWillPop: () async {
-            print("NOPE");
-            Future.value(false); //return a `Future` with false value so this route cant be popped or closed.
-          },
+          onWillPop: () async => Future.value(false), // Disable back button
           child: Container( // PAINT FX
             alignment: Alignment.topCenter,
             child: Stack(children: [
@@ -100,7 +101,7 @@ class _PaintPage extends State<PaintPage> {
             ])
           ),
         ),
-        Container(
+        Container( // SPRAY
           margin: EdgeInsets.only(
             top: screen.height * (1.3 - initAnimation)
           ),
@@ -109,12 +110,11 @@ class _PaintPage extends State<PaintPage> {
               child: Image.asset(
               "assets/spray.png",
               height: screen.height * 0.7,
-              // fit: BoxFit.fitHeight,
             ),
             maxHeight: screen.height * 0.7,
           ),
         ),
-        Container(
+        Container( // zTk
           margin: EdgeInsets.only(
             top: screen.height * 0.65
           ),
@@ -133,8 +133,7 @@ class _PaintPage extends State<PaintPage> {
             ),
           ),
         ),
-        Container(
-          // alignment: Alignment.topCenter,
+        Container( // Paint Button
           width: screen.height * 0.3,
           height: screen.height * 0.3,
           margin: EdgeInsets.only(
@@ -159,7 +158,84 @@ class _PaintPage extends State<PaintPage> {
             },
           ),
         ),
-      ],)
+        Container(
+          alignment: Alignment.centerLeft,
+          child: Column(children: [
+            Container(
+              width: screen.width * 0.3,
+              margin: EdgeInsets.only(
+                top: screen.height * 0.55,
+                left: screen.width * 0.05,
+              ),
+              child: FittedBox(child: FloatingActionButton(
+                backgroundColor: powerIndex == 3?
+                  Colors.white :
+                  Colors.transparent,
+                heroTag: "powerButton3",
+                onPressed: () { setState(() {
+                  powerIndex = 3;
+                });},
+                child: Image.asset("assets/dot.png"),
+              ),),
+            ),
+            Container(
+              width: screen.width * 0.2,
+              margin: EdgeInsets.only(
+                top: screen.height * 0.05,
+                left: screen.width * 0.05,
+              ),
+              child: FittedBox(child: FloatingActionButton(
+                backgroundColor: powerIndex == 2?
+                  Colors.white :
+                  Colors.transparent,
+                heroTag: "powerButton2",
+                onPressed: () { setState(() {
+                  powerIndex = 2;
+                });},
+                child: Image.asset("assets/dot.png"),
+              ),),
+            ),
+            Container(
+              width: screen.width * 0.1,
+              margin: EdgeInsets.only(
+                top: screen.height * 0.05,
+                left: screen.width * 0.05,
+              ),
+              child: FittedBox(child: FloatingActionButton(
+                backgroundColor: powerIndex == 1?
+                  Colors.white :
+                  Colors.transparent,
+                heroTag: "powerButton1",
+                onPressed: () { setState(() {
+                  powerIndex = 1;
+                });},
+                child: Image.asset("assets/dot.png"),
+              ),),
+            ),
+          ]),
+        ),
+        Container(
+          width: screen.width * 0.2,
+          margin: EdgeInsets.only(
+            top: screen.height * 0.05,
+            left: screen.width * 0.75,
+          ),
+          child: FittedBox(child: FloatingActionButton(
+            backgroundColor: Colors.transparent,
+            heroTag: "settingButton",
+            onPressed: () {
+              Navigator.push(context, new MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    SettingsPage(powerValues: powerValues,)
+              ));
+            },
+            child: Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+          ),),
+        ),
+      ])
     );
   }
 
@@ -167,14 +243,14 @@ class _PaintPage extends State<PaintPage> {
     setState(() {
       paintPower = 1;
     });
-    _sendMessage("1");
+    _sendMessage(powerValues[powerIndex]);
   }
 
   _stopPainting() {
     setState(() {
       paintPower = 0;
     });
-    _sendMessage("0");
+    _sendMessage(powerValues[0]);
   }
 
   void _onDataReceived(Uint8List data) {
@@ -211,7 +287,6 @@ class _PaintPage extends State<PaintPage> {
                   0, _messageBuffer.length - backspacesCounter)
               : _messageBuffer + dataString.substring(0, index);
       _messageBuffer = dataString.substring(index);
-      print("FOO: " + x + " KETA");
     } else {
       _messageBuffer = (backspacesCounter > 0
           ? _messageBuffer.substring(
