@@ -3,17 +3,16 @@
 [Add description of the project]
 
 ## Material / Shopping list
-### Electronics
-#### Microcontroller (aka Arduino): ESP32
-* [Shopping link](https://aliexpress.com/item/32916569687.html): 4.21 $ (2020-04-19)
-* Any Arduino like board that has builtin Bluetooth should do the job
+* Microcontroller (aka Arduino): ESP32
+  * [Shopping link](https://aliexpress.com/item/32916569687.html): 4.21 $ (2020-04-19)
+  * Any Arduino like board that has builtin Bluetooth should do the job
 
-#### Servo motor
-* [Shopping link](https://aliexpress.com/item/32977139335.html) 3.94 $ (2020-04-19)
-* Any servo motor with at least X torque should do the job
+* Servo motor
+  * [Shopping link](https://aliexpress.com/item/32977139335.html) 3.94 $ (2020-04-19)
+  * Any servo motor with at least X torque should do the job
 
-#### Battery
-* Any smartphone power bank
+* Battery: Any smartphone power bank
+* Servo holder to press spray: 3D printed [model](https://www.thingiverse.com/thing:1496622).
 
 ## Set up and testing components
 Follow this steps to configure and test your device, specially the Bluetooth. You may have to change some code to make it workable with your device.
@@ -128,9 +127,10 @@ void loop(){
 ## Mobile app
 At the moment there is only application for Android. But since it's coded using Flutter, it should be really easy to make it work for iOS. The proble is that I don't have a mac. If you have one please try to make it work for iOS :)
 
-As of now the app is not releases in any way and if you want to try you must instal flutter and compile it yourself. This should change soon.
+As of now the app is not released in any way and if you want to try you must instal flutter and compile it yourself. This should change soon.
 
 ## Credits and refs
+### [Servo holder to press spray](https://www.thingiverse.com/thing:1496622).
 ### For set up and testing components:
 * [Arduino servo motors](https://www.instructables.com/id/Arduino-Servo-Motors)
 * [ESP32 Servo motors](https://microcontrollerslab.com/esp32-servo-motor-web-server-arduino/)

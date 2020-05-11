@@ -8,7 +8,7 @@ const bool debug = true;
 const int servoPin = 13;   // PWM PIN where the servo control signal is connected (change it according to your device and schematic)
 const int idleAngle = 100; //Angle in which the servo will be rotated when not painting
 const int paintAngle = 50; //Angle in which the servo will be rotated when painting
-const int refreshPeriod = 30; //Sleep time beetween reads for new bluetooth messages in ms
+const int refreshPeriod = 40; //Sleep time beetween reads for new bluetooth messages in ms
 
 void setup() { 
    // We need to attach the servo to the used pin number 
